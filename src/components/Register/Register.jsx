@@ -1,13 +1,15 @@
 
 import React, { useContext, useState } from 'react';
 import './Register.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 
 
 const Register = () => {
     const [error, setError] = useState("");
-    const { createUser } = useContext(AuthContext);
+    const { createUser, signInWithGoogle } = useContext(AuthContext);
+
+    const navigate = useNavigate();
 
     const handleRegister = (e) => {
         e.preventDefault();
@@ -32,6 +34,7 @@ const Register = () => {
                 const loggedUsed = result.user;
                 console.log(loggedUsed);
                 form.reset();
+                navigate("/", {replace: true});
             })
             .catch(error => {
                 console.log(error.message);
@@ -40,6 +43,17 @@ const Register = () => {
 
         console.log(name, email, password);
 
+    }
+    const handleGoogleSignIn = () => {
+        signInWithGoogle()
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                navigate("/", {replace: true});
+            })
+            .catch(error => {
+                console.log(error.message);
+            })
     }
 
 
@@ -69,7 +83,7 @@ const Register = () => {
             </form>
             <p className='or'>or</p>
             <div>
-                <button className='btn-google'>Continue with Google</button>
+                <button className='btn-google' onClick={handleGoogleSignIn}>Continue with Google</button>
             </div>
             <span>{error}</span>
         </div>

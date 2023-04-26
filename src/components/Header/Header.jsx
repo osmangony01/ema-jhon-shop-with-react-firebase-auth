@@ -3,6 +3,7 @@ import './header.css';
 import ActiveLink from '../ActiveLink/ActiveLink';
 import { useContext } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
+import { Link } from 'react-router-dom';
 
 
 const Header = () => {
@@ -30,7 +31,7 @@ const Header = () => {
                 {!user && <ActiveLink to="/register">Sign Up</ActiveLink>}
                 {user && <ActiveLink to="/profile">Profile</ActiveLink>}
                 {
-                    user && <><span className="user">{user.email}</span> <button className='' onClick={handleLogout}>Sign Out</button></>
+                    user && <><span className="user">{user.email}</span> <Link className='' onClick={handleLogout}>Sign Out</Link></>
 
                 }
             </div>

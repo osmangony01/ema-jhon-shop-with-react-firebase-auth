@@ -83,3 +83,9 @@ input {
     margin: 10px 0;
     text-align: center;
 }
+
+.btn-google:hover {
+   color: white;
+    background: black;
+    
+}
