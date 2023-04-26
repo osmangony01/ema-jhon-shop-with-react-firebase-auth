@@ -5,12 +5,20 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import Layout from './components/Layout/Layout';
+import Shop from './components/Shop/Shop';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Hello world!</div>,
+    element: <Layout />,
+    children: [
+      {
+        path: "/",
+        element: <Shop />
+      },
+    ]
   },
 ]);
 
