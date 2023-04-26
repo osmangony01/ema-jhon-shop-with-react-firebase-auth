@@ -1,14 +1,31 @@
 
+import React, { useContext } from 'react';
 import './Login.css';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../providers/AuthProvider';
 
 const Login = () => {
+
+    const { signIn } = useContext(AuthContext);
 
     const handleLogin = (e) => {
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
-        const pasword = form.password.value;
+        const password = form.password.value;
+
+        signIn(email, password)
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                form.reset();
+                // navigate(from, {replace: true});
+            })
+            .catch(error => {
+                console.log(error.message);
+            })
+
+        console.log(email, password);
     }
 
     return (
@@ -17,11 +34,11 @@ const Login = () => {
             <form action="" onSubmit={handleLogin}>
                 <div className='mb'>
                     <label htmlFor="">Email</label>
-                    <input type="email" name="email" className='input-control' placeholder='' required/>
+                    <input type="email" name="email" className='input-control' placeholder='' required />
                 </div>
                 <div className='mb'>
                     <label htmlFor="">Password</label>
-                    <input type="password" name="password" className='input-control' placeholder='' required/>
+                    <input type="password" name="password" className='input-control' placeholder='' required />
                 </div>
                 <button type="submit" className='btn-submit'>Login</button>
                 <p className='account'>New to Ema-jhon? <Link to="/register">Create New Account</Link></p>

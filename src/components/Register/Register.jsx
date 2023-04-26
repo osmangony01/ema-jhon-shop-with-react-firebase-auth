@@ -1,15 +1,15 @@
 
-import React, { useState } from 'react';  
+import React, { useContext, useState } from 'react';
 import './Register.css';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../providers/AuthProvider';
 
 
 const Register = () => {
     const [error, setError] = useState("");
+    const { createUser } = useContext(AuthContext);
 
-    const handleRegister =(e) =>{
-        
-
+    const handleRegister = (e) => {
         e.preventDefault();
         const form = e.target;
         const name = form.name.value;
@@ -17,14 +17,27 @@ const Register = () => {
         const password = form.password.value;
         const confirm_password = form.confirm_password.value;
         setError('');
-        if(password <6){
-            setError('At least 6 character needed!!');
+
+        if (password.length < 6) {
+            setError('At least 6 characters needed!!');
             return;
         }
-        else if(password !== confirm_password){
-            setError("The password did not match!!");
+        else if (password !== confirm_password) {
+            setError("The password didn't match!!");
             return;
         }
+
+        createUser(email, password)
+            .then(result => {
+                const loggedUsed = result.user;
+                console.log(loggedUsed);
+                form.reset();
+            })
+            .catch(error => {
+                console.log(error.message);
+            })
+
+
         console.log(name, email, password);
 
     }
@@ -41,15 +54,15 @@ const Register = () => {
                 </div>
                 <div className='mb'>
                     <label htmlFor="">Email</label>
-                    <input type="email" name="email" className='input-control' placeholder='' required/>
+                    <input type="email" name="email" className='input-control' placeholder='' required />
                 </div>
                 <div className='mb'>
                     <label htmlFor="">Password</label>
-                    <input type="password" name="password" className='input-control' placeholder='' required/>
+                    <input type="password" name="password" className='input-control' placeholder='' required />
                 </div>
                 <div className='mb'>
                     <label htmlFor="">Confirm Password</label>
-                    <input type="password" name="confirm_password" className='input-control' placeholder='' required/>
+                    <input type="password" name="confirm_password" className='input-control' placeholder='' required />
                 </div>
                 <button className='btn-submit'>Sign Up</button>
                 <p className='account'>Already have an account? <Link to="/login">Login</Link></p>
@@ -58,7 +71,7 @@ const Register = () => {
             <div>
                 <button className='btn-google'>Continue with Google</button>
             </div>
-            <span>{}</span>
+            <span>{error}</span>
         </div>
     );
 };
