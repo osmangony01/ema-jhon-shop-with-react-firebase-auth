@@ -1,0 +1,74 @@
+.login {
+    box-sizing: border-box;
+    width: 450px;
+    height: auto;
+    background: #FFFFFF;
+    border: 1px solid #95A0A7;
+    border-radius: 8px;
+    padding: 35px;
+    margin: 50px auto;
+    color: #2A414F;
+}
+
+.login .form-title {
+    margin: 0;
+    padding: 12px 0;
+    text-align: center;
+    font-size: 30px;
+}
+
+input {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.input-control {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: black;
+    background-color: white;
+    border: 1px solid #c8cbcf;
+    border-radius: 6px;
+}
+
+.login .mb {
+    margin-bottom: 20px;
+}
+
+.mb label {
+    margin-bottom: 4px;
+    display: block;
+
+}
+
+.login button {
+    display: block;
+}
+
+.login .account {
+    font-size: 14px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 30px;
+
+}
+
+.login .account a {
+    color: orange;
+    text-decoration: none;
+}
+
+.login .btn-submit {
+    width: 100%;
+    background: rgba(255, 153, 0, 0.3);
+    border-radius: 8px;
+    border: none;
+    padding: 10px 0;
+    font-size: 18px;
+    margin-top: 30px;
+}
+

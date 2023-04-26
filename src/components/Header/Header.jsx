@@ -1,4 +1,4 @@
-import React from 'react';
+
 import './header.css';
 import ActiveLink from '../ActiveLink/ActiveLink';
 

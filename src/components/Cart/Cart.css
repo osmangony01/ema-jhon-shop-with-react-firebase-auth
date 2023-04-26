@@ -1,0 +1,27 @@
+.cart{
+
+}
+
+.cart h3{
+    text-align: center;
+}
+.btn-clear-cart {
+    color: white;
+    background: #FF3030;
+    border-radius: 4px;
+    border: 0;
+    padding: 10px 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+ }
+ .btn-proceed-checkout {
+    color: white;
+    background-color: #FF9900;
+    border: 0;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+ }
